@@ -41,11 +41,3 @@ jobs:
           token: ${{ secrets.TOKEN_GITHUB_SECRET }}
           repository: OttawaSTEM/scratch-arduino-gui
           event_type: release_scratch_arduino_blocks
-
-      # - name: Repository Dispatch
-      #   uses: mvasigh/dispatch-action@main
-      #   with:
-      #     owner: ottawastem
-      #     repo: scratch-arduino
-      #     event_type: release_scratch_arduino_blocks
-      #     token: ${{ secrets.TOKEN_GITHUB_SECRET }}
