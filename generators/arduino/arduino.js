@@ -60,6 +60,38 @@ Blockly.Arduino['arduino_pin_readAnalogPin'] = function (block) {
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
+// Ultrasonic
+Blockly.Arduino['arduino_pin_setPinTrigger'] = function (block) {
+  var arg0 = block.getFieldValue('PIN') || '0';
+  Blockly.Arduino.definitions_['definitions_ultrasonic_setTrigger' + arg0] =
+    '#define PIN_TRIGGER         ' + arg0 + '   // TRIGGER PIN';
+  var code = '';
+  return code;
+};
+
+Blockly.Arduino['arduino_pin_setPinEcho'] = function (block) {
+  var arg0 = block.getFieldValue('PIN') || '0';
+  Blockly.Arduino.definitions_['definitions_ultrasonic_setEcho' + arg0] =
+    '#define PIN_ECHO            ' + arg0 + '   // ECHO PIN';
+  var code = '';
+  return code;
+};
+
+Blockly.Arduino['arduino_pin_getDistance'] = function (block) {
+  Blockly.Arduino.customFunctions_['definitions_pin_getDistance'] =
+    '#include <Ultrasonic.h>\n' +
+    'Ultrasonic ultrasonic(PIN_TRIGGER, PIN_ECHO);\n' +
+    'int distance;';
+
+  var code = 'distance = ultrasonic.read();\n';
+  return code;
+};
+
+Blockly.Arduino['arduino_pin_readDistance'] = function (block) {
+  var code = 'distance';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
+};
+
 Blockly.Arduino['arduino_pin_setServoOutput'] = function (block) {
   var arg0 = block.getFieldValue('PIN') || 'A1';
   var arg1 = Blockly.Arduino.valueToCode(block, 'OUT', Blockly.Arduino.ORDER_UNARY_POSTFIX) || 0;
@@ -71,6 +103,7 @@ Blockly.Arduino['arduino_pin_setServoOutput'] = function (block) {
   var code = 'servo_' + arg0 + '.write' + '(' + arg1 + ');\n';
   return code;
 };
+
 
 Blockly.Arduino['arduino_pin_attachInterrupt'] = function (block) {
   var arg0 = block.getFieldValue('PIN') || '2';
@@ -92,6 +125,7 @@ Blockly.Arduino['arduino_pin_detachInterrupt'] = function (block) {
   var code = 'detachInterrupt(digitalPinToInterrupt(' + arg0 + ');\n';
   return code;
 };
+
 
 Blockly.Arduino['arduino_serial_serialBegin'] = function (block) {
   var arg0 = block.getFieldValue('VALUE') || '9600';
@@ -173,10 +207,12 @@ Blockly.Arduino['arduino_serial_multiSerialReadAByte'] = function (block) {
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
+
 Blockly.Arduino['arduino_sensor_runningTime'] = function () {
   var code = "millis()";
   return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
+
 
 Blockly.Arduino['arduino_data_dataMap'] = function (block) {
   var arg0 = Blockly.Arduino.valueToCode(block, 'DATA', Blockly.Arduino.ORDER_UNARY_POSTFIX) || 0;
