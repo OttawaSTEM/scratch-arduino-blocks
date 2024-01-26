@@ -40,4 +40,4 @@ jobs:
         with:
           token: ${{ secrets.TOKEN_GITHUB_SECRET }}
           repository: OttawaSTEM/scratch-arduino-gui
-          event_type: release_scratch_arduino_blocks
+          event-type: release_scratch_arduino_blocks
