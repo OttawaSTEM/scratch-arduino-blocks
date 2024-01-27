@@ -36,9 +36,9 @@ jobs:
       - run: python --version
       - run: npm install
       - run: npm run prepublish
-      # - run: npm publish
-      #   env:
-      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # - name: Repository Dispatch
       #   uses: peter-evans/repository-dispatch@v3
