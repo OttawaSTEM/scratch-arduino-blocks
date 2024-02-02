@@ -258,7 +258,10 @@ Blockly.Arduino['arduino_nokia5110_setCursor'] = function (block) {
 
 Blockly.Arduino['arduino_nokia5110_writeText'] = function (block) {
   var arg0 = block.getFieldValue('TEXT') || 'Hi';
-  var code = 'display.println("' + arg0 + '"); \n';
+  var arg1 = Blockly.Arduino.valueToCode(block, 'X', Blockly.Arduino.ORDER_UNARY_POSTFIX) || 40;
+  var arg2 = Blockly.Arduino.valueToCode(block, 'Y', Blockly.Arduino.ORDER_UNARY_POSTFIX) || 40;
+  var code = 'display.setCursor(' + arg1 + ', ' + arg2 + '); \n' +
+    'display.println("' + arg0 + '");\n';
   return code;
 };
 
