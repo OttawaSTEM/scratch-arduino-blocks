@@ -224,7 +224,13 @@ Blockly.Arduino['arduino_nokia5110_setInitial'] = function (block) {
     '}';
   Blockly.Arduino.setups_['setup_nokia5110'] =
     'display.begin();\n' +
-    '  display.setContrast(40);\n' +
+    '  display.setContrast(40);\n\n' +
+    '  pinMode(rightPin, INPUT_PULLUP);\n' +
+    '  pinMode(leftPin, INPUT_PULLUP);\n' +
+    '  pinMode(downPin, INPUT_PULLUP);\n' +
+    '  pinMode(upPin, INPUT_PULLUP);\n' +
+    '  pinMode(bPin, INPUT_PULLUP);\n' +
+    '  pinMode(usePin, INPUT_PULLUP);\n\n' +
     '  display.display();\n' +
     '  delay(2000);\n' +
     '  display.clearDisplay();';
@@ -280,4 +286,10 @@ Blockly.Arduino['arduino_nokia5110_drawPicture'] = function (block) {
   var arg3 = block.getFieldValue('COLOR') || 'BLACK';
   var code = 'drawPicture(' + arg0 + ', ' + arg1 + ', "' + arg2 + '", ' + arg3 + '); \n';
   return code;
+};
+
+Blockly.Arduino['arduino_nokia5110_readButton'] = function (block) {
+  var arg0 = block.getFieldValue('BUTTON') || 'upPin';
+  var code = "digitalRead(" + arg0 + ")";
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
