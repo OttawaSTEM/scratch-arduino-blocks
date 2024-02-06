@@ -34,7 +34,7 @@ Blockly.Arduino['arduino_nokia5110_setInitial'] = function (block) {
     'const int downPin = 4;\n' +
     'const int upPin = 5;\n' +
     'const int bPin = 6;\n' +
-    'const int usePin = 7;\n\n' +
+    'const int aPin = 7;\n\n' +
     'Adafruit_PCD8544 display = Adafruit_PCD8544(8, 9, 10, 11, 12);\n\n' +
     'const unsigned char PROGMEM smileyFace[] = {\n' +
     '  B01010000,\n' +
@@ -230,7 +230,7 @@ Blockly.Arduino['arduino_nokia5110_setInitial'] = function (block) {
     '  pinMode(downPin, INPUT_PULLUP);\n' +
     '  pinMode(upPin, INPUT_PULLUP);\n' +
     '  pinMode(bPin, INPUT_PULLUP);\n' +
-    '  pinMode(usePin, INPUT_PULLUP);\n\n' +
+    '  pinMode(aPin, INPUT_PULLUP);\n\n' +
     '  display.display();\n' +
     '  delay(2000);\n' +
     '  display.clearDisplay();';
